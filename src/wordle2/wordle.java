@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class wordle extends JFrame implements ActionListener {
     JPanel p1, main;
     JButton check, clear;
-    JLabel chn;
+    JLabel chn,hintLabel;
     Font f1 = new Font("Tahoma", Font.PLAIN, 22);
     int chances = 5;
     boolean[] flag = new boolean[wordle_logic.wordSize];
@@ -31,10 +31,19 @@ public class wordle extends JFrame implements ActionListener {
         createTexfields();
 
         chn = new JLabel("Chances remaining: "+chances);
-        chn.setBounds(140,250,250,50);
-        chn.setFont(new Font("Tahoma", Font.BOLD, 18));
+        chn.setBounds(125,280,300,50);
+        chn.setFont(new Font("Tahoma", Font.BOLD, 25));
         chn.setForeground(Color.white);
         add(chn);
+
+        hintLabel = new JLabel("<html>Hint: " + wordle_logic.Hint + "</html>");
+        hintLabel.setBounds(140, 180, 300, 100); // Adjusted bounds and size
+        hintLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+        hintLabel.setForeground(Color.white);
+        hintLabel.setVerticalAlignment(SwingConstants.TOP); // Allow vertical alignment at the top
+        hintLabel.setPreferredSize(new Dimension(300, 50)); // Set preferred size
+        hintLabel.setMaximumSize(new Dimension(300, Integer.MAX_VALUE)); // Allow maximum size to expand vertically
+        add(hintLabel);
 
         check = new JButton("Check");
         check.setBounds(100,350,150,50);
